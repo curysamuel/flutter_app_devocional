@@ -4,8 +4,15 @@ class Book {
   bool newTest;
   String startDate;
   String endDate;
+  int id;
 
-  Book({this.title, this.done, this.startDate, this.endDate, this.newTest});
+  Book(
+      {this.id,
+      this.title,
+      this.done,
+      this.startDate,
+      this.endDate,
+      this.newTest});
 
   Book.fromJson(Map<String, dynamic> json) {
     title = json['title'];
@@ -13,6 +20,7 @@ class Book {
     startDate = json['startDate'];
     endDate = json['endDate'];
     newTest = json['newTest'];
+    id = json['id'];
   }
 
   Map<String, dynamic> toJson() {
@@ -22,6 +30,7 @@ class Book {
     data['startDate'] = this.startDate;
     data['endDate'] = this.endDate;
     data['newTest'] = this.newTest;
+    data['id'] = this.id;
     return data;
   }
 }

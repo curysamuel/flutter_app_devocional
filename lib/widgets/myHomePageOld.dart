@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:shared_preferences/shared_preferences.dart";
 import "dart:convert";
 import "package:masked_text/masked_text.dart";
-
+import '../booksRepository.dart';
 import "../models/book.dart";
 import "../models/oldBookList.dart";
 
@@ -21,6 +21,8 @@ class MyHomePageOld extends StatefulWidget {
 }
 
 class _MyHomePageOldState extends State<MyHomePageOld> {
+  final _repository = ContactRepository();
+
   void edit(index, newStartDate, newEndDate) {
     setState(() {
       if (index < widget.bookList.list.length) {
@@ -114,6 +116,9 @@ class _MyHomePageOldState extends State<MyHomePageOld> {
 
   @override
   Widget build(BuildContext context) {
+    _repository.create(new Book(done: false, title: "Gênesis", newTest: false));
+    print(_repository.getBooks());
+
     // widget.bookList.list =
     //     widget.bookList.list.where((f) => f.newTest).toList();
     return new Scaffold(
